@@ -49,9 +49,9 @@ export default function LatestBlog() {
                                 href={{ pathname: '/blog/[...slug]', params: { slug: (locale === 'vi' ? post.slugs.vi : post.slugs.en).split('/') } }}
                                 className="block bg-white rounded-2xl overflow-hidden border border-border-light shadow-sm hover:shadow-[var(--shadow-card)] transition-all duration-300 cursor-pointer group h-full"
                             >
-                                {/* Image placeholder */}
-                                <div className="aspect-[16/9] bg-gradient-to-br from-primary/5 via-surface to-accent/5 flex items-center justify-center">
-                                    <span className="text-4xl font-heading font-bold text-primary/10">{t(`post${post.num}Category`)}</span>
+                                {/* Blog Image */}
+                                <div className="aspect-[16/9] overflow-hidden">
+                                    <img src={`/images/blog/blog${post.num}.png`} alt={t(`post${post.num}Title`)} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                                 </div>
 
                                 <div className="p-5">

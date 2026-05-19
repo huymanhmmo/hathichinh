@@ -29,6 +29,7 @@ export default function BlogListClient() {
         categoryLabel: t(bp.categoryKey as any),
         date: bp.date,
         readTime: bp.readTime,
+        image: `/images/blog/blog${bp.num}.png`,
     }));
 
     const filtered = posts
@@ -67,8 +68,8 @@ export default function BlogListClient() {
                         {filtered.map((post, i) => (
                             <motion.article key={post.slugs.vi} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
                                 <IntlLink href={{ pathname: '/blog/[...slug]', params: { slug: (locale === 'vi' ? post.slugs.vi : post.slugs.en).split('/') } }} className="block bg-white rounded-2xl overflow-hidden border border-border-light shadow-sm hover:shadow-[var(--shadow-card)] transition-all cursor-pointer group h-full">
-                                    <div className="aspect-[16/9] bg-gradient-to-br from-primary/5 via-surface to-accent/5 flex items-center justify-center">
-                                        <span className="text-3xl font-heading font-bold text-primary/10">{post.categoryLabel}</span>
+                                    <div className="aspect-[16/9] overflow-hidden">
+                                        <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                                     </div>
                                     <div className="p-5">
                                         <div className="flex items-center gap-3 mb-3">
