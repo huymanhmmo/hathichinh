@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server";
 
-export const runtime = "edge";
-
 const RECIPIENT_EMAILS = "cskh@hathichinh.com, hachinh.rhm@gmail.com";
 
 // --- Security: HTML escape to prevent XSS in email templates ---

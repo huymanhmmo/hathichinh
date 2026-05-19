@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { SITE_URL } from "@/lib/constants";
 
-export const runtime = "edge";
-
 // IndexNow key - must match the file at /public/[key].txt
 // Register at https://www.indexnow.org/
 const INDEXNOW_KEY = process.env.INDEXNOW_KEY || "ebae89fe653a405e8103dcc65fa43303";
