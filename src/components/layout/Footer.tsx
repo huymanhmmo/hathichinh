@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { Link as IntlLink } from "@/i18n/navigation";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
@@ -74,13 +73,13 @@ export default function Footer() {
                         <h3 className="font-heading font-bold text-white text-lg mb-5">{t("services")}</h3>
                         <ul className="space-y-2.5">
                             {SERVICES.map((service) => (
-                                <li key={service.slug}>
+                                <li key={service.slugs.vi}>
                                     <IntlLink
-                                        href={{ pathname: '/dich-vu/[slug]', params: { slug: service.slug } }}
+                                        href={{ pathname: '/dich-vu/[slug]', params: { slug: service.slugs.vi } }}
                                         className="flex items-center gap-2 text-sm text-white/70 hover:text-accent transition-colors cursor-pointer group"
                                     >
                                         <ChevronRight size={14} className="text-accent/50 group-hover:text-accent transition-colors" />
-                                        {tSvc(serviceKeyMap[service.slug] || service.slug)}
+                                        {tSvc(serviceKeyMap[service.slugs.vi] || service.slugs.vi as any)}
                                     </IntlLink>
                                 </li>
                             ))}

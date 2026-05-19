@@ -121,7 +121,7 @@ export default function Header() {
                                                         href={{ pathname: '/dich-vu/[slug]', params: { slug: child.slug } }}
                                                         className="block px-4 py-2.5 text-sm text-text hover:text-accent hover:bg-surface transition-colors cursor-pointer"
                                                     >
-                                                        {tSvc(child.labelKey)}
+                                                        {tSvc(child.labelKey as any)}
                                                     </IntlLink>
                                                 ))}
                                             </motion.div>
@@ -198,7 +198,7 @@ export default function Header() {
                                                             onClick={() => setIsMobileOpen(false)}
                                                             className="block px-4 py-2 text-sm text-text-muted hover:text-accent transition-colors cursor-pointer"
                                                         >
-                                                            {tSvc(child.labelKey)}
+                                                            {tSvc(child.labelKey as any)}
                                                         </IntlLink>
                                                     ))}
                                                 </div>

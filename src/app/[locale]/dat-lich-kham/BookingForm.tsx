@@ -120,9 +120,9 @@ export default function BookingForm() {
                                         className="w-full px-4 py-3 rounded-xl border border-border bg-white focus:border-accent outline-none transition-colors cursor-pointer">
                                         <option value="">{t("selectService")}</option>
                                         {SERVICES.map((s) => {
-                                            const svcKey = SERVICE_KEY_MAP[s.slug] || s.slug;
+                                            const svcKey = SERVICE_KEY_MAP[s.slugs.vi] || s.slugs.vi;
                                             return (
-                                                <option key={s.slug} value={s.slug}>{tSvc(svcKey)}</option>
+                                                <option key={s.slugs.vi} value={s.slugs.vi}>{tSvc(svcKey as any)}</option>
                                             );
                                         })}
                                         <option value="khac">{t("otherService")}</option>

@@ -5,11 +5,9 @@ import { Link as IntlLink } from "@/i18n/navigation";
 import { useTranslations, useLocale } from "next-intl";
 import { Calendar, ArrowRight, Clock } from "lucide-react";
 
-const POSTS = [
-    { num: 1, slug: "implant/implant-co-dau-khong", date: "2026-02-25", readTime: 8 },
-    { num: 2, slug: "nieng-rang/invisalign-gia-bao-nhieu", date: "2026-02-20", readTime: 10 },
-    { num: 3, slug: "rang-su/veneer-su-la-gi", date: "2026-02-15", readTime: 7 },
-];
+import { BLOG_POSTS } from "@/lib/blogData";
+
+const POSTS = BLOG_POSTS.slice(0, 3);
 
 export default function LatestBlog() {
     const t = useTranslations("latestBlog");
@@ -41,14 +39,14 @@ export default function LatestBlog() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {POSTS.map((post, i) => (
                         <motion.article
-                            key={post.slug}
+                            key={post.num}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.4, delay: i * 0.1 }}
                         >
                             <IntlLink
-                                href={{ pathname: '/blog/[...slug]', params: { slug: post.slug.split('/') } }}
+                                href={{ pathname: '/blog/[...slug]', params: { slug: (locale === 'vi' ? post.slugs.vi : post.slugs.en).split('/') } }}
                                 className="block bg-white rounded-2xl overflow-hidden border border-border-light shadow-sm hover:shadow-[var(--shadow-card)] transition-all duration-300 cursor-pointer group h-full"
                             >
                                 {/* Image placeholder */}

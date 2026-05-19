@@ -5,6 +5,9 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 const nextConfig: NextConfig = {
   /* Override default cache headers so Cloudflare doesn't cache HTML for 1 year */
+  images: {
+    unoptimized: true,
+  },
   async headers() {
     return [
       {

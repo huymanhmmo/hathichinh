@@ -22,7 +22,7 @@ export default function BlogListClient() {
     ];
 
     const posts = BLOG_POSTS.map((bp) => ({
-        slug: bp.slug,
+        slugs: bp.slugs,
         title: t(`post${bp.num}Title`),
         excerpt: t(`post${bp.num}Excerpt`),
         categoryKey: bp.categoryKey,
@@ -65,8 +65,8 @@ export default function BlogListClient() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {filtered.map((post, i) => (
-                            <motion.article key={post.slug} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
-                                <IntlLink href={{ pathname: '/blog/[...slug]', params: { slug: post.slug.split('/') } }} className="block bg-white rounded-2xl overflow-hidden border border-border-light shadow-sm hover:shadow-[var(--shadow-card)] transition-all cursor-pointer group h-full">
+                            <motion.article key={post.slugs.vi} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
+                                <IntlLink href={{ pathname: '/blog/[...slug]', params: { slug: (locale === 'vi' ? post.slugs.vi : post.slugs.en).split('/') } }} className="block bg-white rounded-2xl overflow-hidden border border-border-light shadow-sm hover:shadow-[var(--shadow-card)] transition-all cursor-pointer group h-full">
                                     <div className="aspect-[16/9] bg-gradient-to-br from-primary/5 via-surface to-accent/5 flex items-center justify-center">
                                         <span className="text-3xl font-heading font-bold text-primary/10">{post.categoryLabel}</span>
                                     </div>

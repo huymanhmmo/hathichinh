@@ -31,6 +31,10 @@ export const DOCTOR = {
 
 export interface Clinic {
     id: string;
+    slugs: {
+        vi: string;
+        en: string;
+    };
     name: string;
     address: string;
     city: string;
@@ -41,6 +45,7 @@ export interface Clinic {
 export const CLINICS: Clinic[] = [
     {
         id: "dc-dental",
+        slugs: { vi: "nha-khoa-dc-dental", en: "dc-dental-clinic" },
         name: "Nha khoa DC Dental",
         address: "Số 2 Giang Cao, Bát Tràng, Gia Lâm, Hà Nội",
         city: "Hà Nội",
@@ -48,24 +53,28 @@ export const CLINICS: Clinic[] = [
     },
     {
         id: "ocean",
+        slugs: { vi: "nha-khoa-ocean", en: "ocean-dental" },
         name: "Nha khoa Ocean",
         address: "S208 Vinhomes Ocean Park, Đa Tốn, Gia Lâm, Hà Nội",
         city: "Hà Nội",
     },
     {
         id: "eco-dental",
+        slugs: { vi: "nha-khoa-eco-dental", en: "eco-dental-clinic" },
         name: "Nha khoa Eco Dental",
         address: "150C Thủy Nguyên, Ecopark, Văn Giang, Hưng Yên",
         city: "Hưng Yên",
     },
     {
         id: "an-nam",
+        slugs: { vi: "nha-khoa-an-nam", en: "an-nam-dental" },
         name: "Nha Khoa An Nam",
         address: "Ngã 5 Phi Liệt, Liên Nghĩa, Văn Giang, Hưng Yên",
         city: "Hưng Yên",
     },
     {
         id: "hai-duong",
+        slugs: { vi: "nha-khoa-hai-duong", en: "hai-duong-dental" },
         name: "Nha Khoa Hải Dương",
         address: "Phường Hải Dương, Thành phố Hải Phòng",
         city: "Hải Phòng",
@@ -131,58 +140,58 @@ export const SUB_SERVICE_KEY_MAP: Record<string, string> = {
 
 export const SERVICES = [
     {
-        slug: "cay-ghep-implant",
+        slugs: { vi: "cay-ghep-implant", en: "dental-implant" },
         title: "Cấy ghép Implant",
         shortDesc: "Phục hồi răng mất bằng công nghệ Implant hiện đại, bền vững như răng thật.",
         icon: "implant",
         featured: true,
         subServices: [
-            { slug: "1-rang", title: "Implant 1 răng" },
-            { slug: "nhieu-rang", title: "Implant nhiều răng" },
-            { slug: "all-on-4", title: "All-on-4" },
-            { slug: "tuc-thi", title: "Implant tức thì" },
+            { slugs: { vi: "1-rang", en: "single-tooth" }, title: "Implant 1 răng" },
+            { slugs: { vi: "nhieu-rang", en: "multiple-teeth" }, title: "Implant nhiều răng" },
+            { slugs: { vi: "all-on-4", en: "all-on-4" }, title: "All-on-4" },
+            { slugs: { vi: "tuc-thi", en: "immediate" }, title: "Implant tức thì" },
         ],
     },
     {
-        slug: "nieng-rang",
+        slugs: { vi: "nieng-rang", en: "orthodontics" },
         title: "Niềng răng – Chỉnh nha",
         shortDesc: "Chỉnh nha thẩm mỹ với nhiều phương pháp từ mắc cài đến trong suốt.",
         icon: "orthodontic",
         featured: true,
         subServices: [
-            { slug: "mac-cai-kim-loai", title: "Mắc cài kim loại" },
-            { slug: "mac-cai-su", title: "Mắc cài sứ" },
-            { slug: "invisalign", title: "Invisalign" },
-            { slug: "mat-luoi", title: "Mắc cài mặt lưỡi" },
+            { slugs: { vi: "mac-cai-kim-loai", en: "metal-braces" }, title: "Mắc cài kim loại" },
+            { slugs: { vi: "mac-cai-su", en: "ceramic-braces" }, title: "Mắc cài sứ" },
+            { slugs: { vi: "invisalign", en: "invisalign" }, title: "Invisalign" },
+            { slugs: { vi: "mat-luoi", en: "lingual-braces" }, title: "Mắc cài mặt lưỡi" },
         ],
     },
     {
-        slug: "rang-su-tham-my",
+        slugs: { vi: "rang-su-tham-my", en: "cosmetic-dentistry" },
         title: "Răng sứ thẩm mỹ",
         shortDesc: "Phục hình thẩm mỹ với răng sứ cao cấp, tự nhiên và bền đẹp.",
         icon: "veneer",
         featured: true,
         subServices: [
-            { slug: "boc-rang-su", title: "Bọc răng sứ" },
-            { slug: "dan-veneer", title: "Dán Veneer" },
-            { slug: "smile-design", title: "Smile Design" },
+            { slugs: { vi: "boc-rang-su", en: "porcelain-crowns" }, title: "Bọc răng sứ" },
+            { slugs: { vi: "dan-veneer", en: "veneers" }, title: "Dán Veneer" },
+            { slugs: { vi: "smile-design", en: "smile-design" }, title: "Smile Design" },
         ],
     },
     {
-        slug: "phau-thuat-trong-mieng",
+        slugs: { vi: "phau-thuat-trong-mieng", en: "oral-surgery" },
         title: "Phẫu thuật trong miệng",
         shortDesc: "Phẫu thuật chuyên sâu: nhổ răng khôn, cười hở lợi, ghép xương.",
         icon: "surgery",
         featured: true,
         subServices: [
-            { slug: "nho-rang-khon", title: "Nhổ răng khôn" },
-            { slug: "cuoi-ho-loi", title: "Cười hở lợi" },
-            { slug: "ghep-xuong", title: "Ghép xương" },
-            { slug: "nang-xoang", title: "Nâng xoang" },
+            { slugs: { vi: "nho-rang-khon", en: "wisdom-teeth" }, title: "Nhổ răng khôn" },
+            { slugs: { vi: "cuoi-ho-loi", en: "gummy-smile" }, title: "Cười hở lợi" },
+            { slugs: { vi: "ghep-xuong", en: "bone-grafting" }, title: "Ghép xương" },
+            { slugs: { vi: "nang-xoang", en: "sinus-lift" }, title: "Nâng xoang" },
         ],
     },
     {
-        slug: "dieu-tri-noi-nha",
+        slugs: { vi: "dieu-tri-noi-nha", en: "endodontics" },
         title: "Điều trị nội nha",
         shortDesc: "Điều trị tủy răng chuyên sâu, bảo tồn răng tối đa.",
         icon: "endodontic",
@@ -190,7 +199,7 @@ export const SERVICES = [
         subServices: [],
     },
     {
-        slug: "nha-khoa-tre-em",
+        slugs: { vi: "nha-khoa-tre-em", en: "pediatric-dentistry" },
         title: "Nha khoa trẻ em",
         shortDesc: "Chăm sóc răng miệng toàn diện cho trẻ em trong môi trường thân thiện.",
         icon: "pediatric",
@@ -198,7 +207,7 @@ export const SERVICES = [
         subServices: [],
     },
     {
-        slug: "tay-trang-rang",
+        slugs: { vi: "tay-trang-rang", en: "teeth-whitening" },
         title: "Tẩy trắng răng",
         shortDesc: "Trắng sáng tự nhiên với công nghệ tẩy trắng an toàn, hiệu quả.",
         icon: "whitening",

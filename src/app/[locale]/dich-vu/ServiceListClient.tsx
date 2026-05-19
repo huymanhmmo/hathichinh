@@ -16,24 +16,24 @@ export default function ServiceListClient() {
                 <div className="container-custom">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {SERVICES.map((service, i) => {
-                            const svcKey = SERVICE_KEY_MAP[service.slug] || service.slug;
+                            const svcKey = SERVICE_KEY_MAP[service.slugs.vi] || service.slugs.vi;
                             return (
                                 <motion.div
-                                    key={service.slug}
+                                    key={service.slugs.vi}
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: i * 0.08 }}
                                 >
                                     <IntlLink
-                                        href={{ pathname: '/dich-vu/[slug]', params: { slug: service.slug } }}
+                                        href={{ pathname: '/dich-vu/[slug]', params: { slug: service.slugs.vi } }}
                                         className="block p-6 rounded-2xl bg-white border border-border-light shadow-sm hover:shadow-[var(--shadow-card)] transition-all cursor-pointer group h-full"
                                     >
                                         <div className="w-14 h-14 rounded-xl gradient-gold flex items-center justify-center text-white mb-5 shadow-[var(--shadow-gold)]">
                                             <Layers size={24} />
                                         </div>
                                         <h2 className="font-heading text-xl font-bold text-primary mb-2 group-hover:text-accent transition-colors">
-                                            {tSvc(svcKey)}
+                                            {tSvc(svcKey as any)}
                                         </h2>
                                         <p className="text-sm text-text-muted leading-relaxed mb-4">
                                             {tSvc(`${svcKey}Desc`)}
@@ -43,10 +43,10 @@ export default function ServiceListClient() {
                                                 <div className="text-xs font-medium text-accent mb-2">{t("subServicesLabel")}:</div>
                                                 <div className="flex flex-wrap gap-1.5">
                                                     {service.subServices.map((sub) => {
-                                                        const subKey = SUB_SERVICE_KEY_MAP[`${service.slug}/${sub.slug}`] || sub.slug;
+                                                        const subKey = SUB_SERVICE_KEY_MAP[`${service.slugs.vi}/${sub.slugs.vi}`] || sub.slugs.vi;
                                                         return (
-                                                            <span key={sub.slug} className="text-xs px-2 py-1 rounded-full bg-surface text-text-muted">
-                                                                {tSvc(subKey)}
+                                                            <span key={sub.slugs.vi} className="text-xs px-2 py-1 rounded-full bg-surface text-text-muted">
+                                                                {tSvc(subKey as any)}
                                                             </span>
                                                         );
                                                     })}

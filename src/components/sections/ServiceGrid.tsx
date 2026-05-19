@@ -43,17 +43,17 @@ export default function ServiceGrid() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                     {SERVICES.map((service, index) => {
                         const Icon = iconMap[service.icon] || Stethoscope;
-                        const svcKey = SERVICE_KEY_MAP[service.slug] || service.slug;
+                        const svcKey = SERVICE_KEY_MAP[service.slugs.vi] || service.slugs.vi;
                         return (
                             <motion.div
-                                key={service.slug}
+                                key={service.slugs.vi}
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-50px" }}
                                 transition={{ duration: 0.4, delay: index * 0.08 }}
                             >
                                 <IntlLink
-                                    href={{ pathname: '/dich-vu/[slug]', params: { slug: service.slug } }}
+                                    href={{ pathname: '/dich-vu/[slug]', params: { slug: service.slugs.vi } }}
                                     className={`block p-6 rounded-2xl border transition-all duration-300 cursor-pointer group h-full ${service.featured
                                         ? "bg-white border-accent/20 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-gold)] hover:border-accent/40"
                                         : "bg-white border-border hover:shadow-[var(--shadow-card)] hover:border-accent/20"
@@ -64,18 +64,18 @@ export default function ServiceGrid() {
                                         <Icon size={22} className={service.featured ? "text-accent" : "text-primary group-hover:text-accent transition-colors"} />
                                     </div>
                                     <h3 className="font-heading text-lg font-bold text-primary mb-2 group-hover:text-accent transition-colors">
-                                        {t(svcKey)}
+                                        {t(svcKey as any)}
                                     </h3>
                                     <p className="text-sm text-text-muted leading-relaxed mb-4">
-                                        {t(`${svcKey}Desc`)}
+                                        {t(`${svcKey}Desc` as any)}
                                     </p>
                                     {service.subServices.length > 0 && (
                                         <div className="flex flex-wrap gap-1.5 mb-4">
                                             {service.subServices.slice(0, 3).map((sub) => {
-                                                const subKey = SUB_SERVICE_KEY_MAP[`${service.slug}/${sub.slug}`] || sub.slug;
+                                                const subKey = SUB_SERVICE_KEY_MAP[`${service.slugs.vi}/${sub.slugs.vi}`] || sub.slugs.vi;
                                                 return (
-                                                    <span key={sub.slug} className="text-xs px-2.5 py-1 rounded-full bg-surface text-text-muted">
-                                                        {t(subKey)}
+                                                    <span key={sub.slugs.vi} className="text-xs px-2.5 py-1 rounded-full bg-surface text-text-muted">
+                                                        {t(subKey as any)}
                                                     </span>
                                                 );
                                             })}

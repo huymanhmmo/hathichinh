@@ -7,9 +7,17 @@ import BlogPostClient from "./BlogPostClient";
 type Props = { params: Promise<{ locale: string; slug: string[] }> };
 
 export async function generateStaticParams() {
-    return BLOG_POSTS.map((post) => ({
-        slug: post.slug.split("/"),
-    }));
+    const locales = ["vi", "en"];
+    const params: { locale: string; slug: string[] }[] = [];
+    locales.forEach((locale) => {
+        BLOG_POSTS.forEach((post) => {
+            params.push({
+                locale,
+                slug: (locale === "en" ? post.slugs.en : post.slugs.vi).split("/"),
+            });
+        });
+    });
+    return params;
 }
 
 export async function generateMetadata({ params }: Props) {

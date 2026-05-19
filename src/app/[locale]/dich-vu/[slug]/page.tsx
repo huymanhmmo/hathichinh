@@ -8,15 +8,22 @@ import ServiceDetailClient from "./ServiceDetailClient";
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
 export async function generateStaticParams() {
-    return SERVICES.map((s) => ({ slug: s.slug }));
+    const locales = ["vi", "en"];
+    const params: { locale: string; slug: string }[] = [];
+    locales.forEach((locale) => {
+        SERVICES.forEach((s) => {
+            params.push({ locale, slug: (locale === "en" ? s.slugs.en : s.slugs.vi) });
+        });
+    });
+    return params;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { locale, slug } = await params;
-    const service = SERVICES.find((s) => s.slug === slug);
+    const service = SERVICES.find((s) => s.slugs.vi === slug || s.slugs.en === slug);
     if (!service) return {};
 
-    const svcKey = SERVICE_KEY_MAP[slug] || slug;
+    const svcKey = SERVICE_KEY_MAP[service.slugs.vi] || service.slugs.vi;
     const tSvc = await getTranslations({ locale, namespace: "services" });
     const tPage = await getTranslations({ locale, namespace: "serviceDetailPage" });
 
@@ -29,13 +36,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ServiceDetailPage({ params }: Props) {
     const { locale, slug } = await params;
     setRequestLocale(locale);
-    const service = SERVICES.find((s) => s.slug === slug);
+    const service = SERVICES.find((s) => s.slugs.vi === slug || s.slugs.en === slug);
     if (!service) notFound();
 
     const tSvc = await getTranslations({ locale, namespace: "services" });
     const tList = await getTranslations({ locale, namespace: "serviceListPage" });
 
-    const svcKey = SERVICE_KEY_MAP[slug] || slug;
+    const svcKey = SERVICE_KEY_MAP[service.slugs.vi] || service.slugs.vi;
 
     return (
         <>

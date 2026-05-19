@@ -18,6 +18,14 @@ export const routing = defineRouting({
             vi: '/dich-vu/[slug]',
             en: '/services/[slug]',
         },
+        '/phong-kham': {
+            vi: '/phong-kham',
+            en: '/clinics',
+        },
+        '/phong-kham/[slug]': {
+            vi: '/phong-kham/[slug]',
+            en: '/clinics/[slug]',
+        },
         '/quy-trinh-dieu-tri': {
             vi: '/quy-trinh-dieu-tri',
             en: '/process',

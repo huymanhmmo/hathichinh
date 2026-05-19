@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
+
 import { Link as IntlLink } from "@/i18n/navigation";
 import Image from "next/image";
 import { useTranslations } from "next-intl";

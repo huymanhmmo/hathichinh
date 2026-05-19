@@ -1,21 +1,8 @@
-import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Metadata } from "next";
 import "./globals.css";
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, DOCTOR } from "@/lib/constants";
 
-const playfair = Playfair_Display({
-  subsets: ["latin", "vietnamese"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-heading",
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin", "vietnamese"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-body",
-  display: "swap",
-});
+// Fonts are initialized in locale layout to support HTML tags properly
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -64,7 +51,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html className={`${playfair.variable} ${inter.variable}`} suppressHydrationWarning>
+    <html suppressHydrationWarning>
       <body>{children}</body>
     </html>
   );

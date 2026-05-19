@@ -17,11 +17,11 @@ export default function ServiceDetailClient({ slug }: { slug: string }) {
     const tSvc = useTranslations("services");
     const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-    const service = SERVICES.find((s) => s.slug === slug);
+    const service = SERVICES.find((s) => s.slugs.vi === slug || s.slugs.en === slug);
     if (!service) return null;
 
-    const svcKey = SERVICE_KEY_MAP[slug] || slug;
-    const serviceTitle = tSvc(svcKey);
+    const svcKey = SERVICE_KEY_MAP[service.slugs.vi] || service.slugs.vi;
+    const serviceTitle = tSvc(svcKey as any);
 
     const processSteps = [
         { icon: processIcons[0], title: t("processStep1"), desc: t("processStep1Desc") },
@@ -64,17 +64,17 @@ export default function ServiceDetailClient({ slug }: { slug: string }) {
                         </h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {service.subServices.map((sub, i) => {
-                                const subKey = SUB_SERVICE_KEY_MAP[`${service.slug}/${sub.slug}`] || sub.slug;
+                                const subKey = SUB_SERVICE_KEY_MAP[`${service.slugs.vi}/${sub.slugs.vi}`] || sub.slugs.vi;
                                 return (
                                     <motion.div
-                                        key={sub.slug}
+                                        key={sub.slugs.vi}
                                         initial={{ opacity: 0, y: 20 }}
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ delay: i * 0.08 }}
                                         className="p-6 rounded-2xl bg-surface border border-border-light"
                                     >
-                                        <h3 className="font-heading text-lg font-bold text-primary">{tSvc(subKey)}</h3>
+                                        <h3 className="font-heading text-lg font-bold text-primary">{tSvc(subKey as any)}</h3>
                                     </motion.div>
                                 );
                             })}
