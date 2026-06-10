@@ -66,7 +66,7 @@ export default function Header() {
             >
                 <div className="container-custom flex items-center justify-between h-[72px]">
                     {/* Logo */}
-                    <IntlLink href="/" className="flex items-center gap-3 cursor-pointer group">
+                    <IntlLink href="/" prefetch={false} className="flex items-center gap-3 cursor-pointer group">
                         <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#C5A55A] shadow-sm">
                             <Image
                                 src="/images/doctor-logo.png"
@@ -95,6 +95,7 @@ export default function Header() {
                             >
                                 <IntlLink
                                     href={item.href}
+                                    prefetch={false}
                                     className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors cursor-pointer flex items-center gap-1 ${item.href === "/dat-lich-kham"
                                         ? "btn-primary !py-2 !px-5 !text-sm"
                                         : "text-text hover:text-accent hover:bg-surface"
@@ -119,6 +120,7 @@ export default function Header() {
                                                     <IntlLink
                                                         key={child.slug}
                                                         href={{ pathname: '/dich-vu/[slug]', params: { slug: child.slug } }}
+                                                        prefetch={false}
                                                         className="block px-4 py-2.5 text-sm text-text hover:text-accent hover:bg-surface transition-colors cursor-pointer"
                                                     >
                                                         {tSvc(child.labelKey as any)}
@@ -181,6 +183,7 @@ export default function Header() {
                                         <div key={item.href}>
                                             <IntlLink
                                                 href={item.href}
+                                                prefetch={false}
                                                 onClick={() => setIsMobileOpen(false)}
                                                 className={`block px-4 py-3 rounded-lg text-base font-medium transition-colors cursor-pointer ${item.href === "/dat-lich-kham"
                                                     ? "btn-primary w-full text-center mt-4"
@@ -195,6 +198,7 @@ export default function Header() {
                                                         <IntlLink
                                                             key={child.slug}
                                                             href={{ pathname: '/dich-vu/[slug]', params: { slug: child.slug } }}
+                                                            prefetch={false}
                                                             onClick={() => setIsMobileOpen(false)}
                                                             className="block px-4 py-2 text-sm text-text-muted hover:text-accent transition-colors cursor-pointer"
                                                         >

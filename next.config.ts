@@ -11,12 +11,12 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        // All HTML pages - short cache with revalidation
-        source: '/:path*',
+        // Target only HTML pages - exclude static assets, APIs, and file extension paths (e.g. .env, .xml)
+        source: '/((?!api/|_next/|favicon\\.ico|images/|.*\\..*).*)',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=0, s-maxage=60, stale-while-revalidate=300',
+            value: 'public, max-age=0, s-maxage=300',
           },
         ],
       },

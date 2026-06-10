@@ -76,6 +76,7 @@ export default function Footer() {
                                 <li key={service.slugs.vi}>
                                     <IntlLink
                                         href={{ pathname: '/dich-vu/[slug]', params: { slug: service.slugs.vi } }}
+                                        prefetch={false}
                                         className="flex items-center gap-2 text-sm text-white/70 hover:text-accent transition-colors cursor-pointer group"
                                     >
                                         <ChevronRight size={14} className="text-accent/50 group-hover:text-accent transition-colors" />
@@ -103,6 +104,7 @@ export default function Footer() {
                                 <li key={link.href}>
                                     <IntlLink
                                         href={link.href}
+                                        prefetch={false}
                                         className="flex items-center gap-2 text-sm text-white/70 hover:text-accent transition-colors cursor-pointer group"
                                     >
                                         <ChevronRight size={14} className="text-accent/50 group-hover:text-accent transition-colors" />
@@ -146,10 +148,10 @@ export default function Footer() {
                 <div className="container-custom py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-white/50">
                     <p>© {new Date().getFullYear()} {SITE_NAME}. {t("rights")}.</p>
                     <div className="flex items-center gap-4">
-                        <IntlLink href="/chinh-sach-bao-mat" className="hover:text-accent transition-colors cursor-pointer">
+                        <IntlLink href="/chinh-sach-bao-mat" prefetch={false} className="hover:text-accent transition-colors cursor-pointer">
                             {t("privacy")}
                         </IntlLink>
-                        <IntlLink href="/dieu-khoan-su-dung" className="hover:text-accent transition-colors cursor-pointer">
+                        <IntlLink href="/dieu-khoan-su-dung" prefetch={false} className="hover:text-accent transition-colors cursor-pointer">
                             {t("terms")}
                         </IntlLink>
                     </div>
